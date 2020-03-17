@@ -30,6 +30,6 @@ class JetsController < ApplicationController
   end
 
   def jet_params
-    params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id)
+    params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id, photos: [])
   end
 end

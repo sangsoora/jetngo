@@ -5,4 +5,5 @@ class Jet < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
   validates :capacity, presence: true, numericality: true
   validates :unit_price, presence: true, numericality: true
+  has_many_attached :photos
 end

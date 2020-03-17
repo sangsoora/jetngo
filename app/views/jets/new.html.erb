@@ -4,6 +4,7 @@
   <%= f.input :capacity, collection: (4..15)  %>
   <%= f.input :unit_price, collection: (1000..2000)  %>
   <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit value: 'Add Jet', class: 'btn btn-primary' %>
 <% end %>
 
