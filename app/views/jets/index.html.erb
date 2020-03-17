@@ -1,0 +1,19 @@
+<%= render 'shared/banner' %>
+<div class="container">
+  <%= link_to "Create new jet",new_jet_path  %>
+  <div class="cards">
+    <% @jets.each do |jet| %>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= link_to jet.name, jet_path(jet)  %></h2>
+          <p><%= jet.model %> <%= jet.capacity %> Host: <%= jet.user.first_name %> Location: <%= jet.city.name %> </p>
+        </div>
+        <h2 class="card-trip-pricing"><%= jet.unit_price %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

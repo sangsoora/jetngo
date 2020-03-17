@@ -1,0 +1,8 @@
+<h1><%= @jet.name %></h1>
+<h2><%= @jet.model %></h2>
+<p>Capacity: <%= @jet.capacity %></p>
+<p>Host: <%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+<p>Price per day: <%= @jet.unit_price%></p>
+
+<%= link_to "Back to list", root_path %>
+<%= link_to "Create new jet",new_jet_path  %>

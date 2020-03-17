@@ -1,0 +1,10 @@
+<%= simple_form_for @jet do |f| %>
+  <%= f.input :name %>
+  <%= f.input :model %>
+  <%= f.input :capacity, collection: (4..15)  %>
+  <%= f.input :unit_price, collection: (1000..2000)  %>
+  <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+  <%= f.submit value: 'Add Jet', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to "Back to list", root_path %>
