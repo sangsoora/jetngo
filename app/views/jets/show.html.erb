@@ -1,5 +1,10 @@
 <h1><%= @jet.name %></h1>
 <h2><%= @jet.model %></h2>
+<% if @jet.photos.attached? %>
+  <% @jet.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
 <p>Capacity: <%= @jet.capacity %></p>
 <p>Host: <%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
 <p>Price per day: <%= @jet.unit_price%></p>
