@@ -52,8 +52,11 @@
         <li><p>Price per day: &euro; <%= @jet.unit_price%></p></li>
       </ul>
     </div>
+
+<!--     BOOKING FORM -->
     <div class="col-6 text-center border">
       <h2>Booking form</h2>
+      <%= link_to "Reserve", new_jet_booking_path(@jet), class: "btn btn-primary my-6"  %>
     </div>
   </div>
   <div class="row my-4 border">
