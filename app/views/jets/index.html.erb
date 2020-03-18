@@ -1,7 +1,7 @@
 <%= render 'shared/banner' %>
 <div class="container">
   <div class="mt-4">
-    <h1 class="text-center">All avaiable private jets!</h1>
+    <h2 class="text-center">All available private jets!</h2>
   </div>
   <div class="cards my-4">
     <% @jets.each do |jet| %>
@@ -13,7 +13,7 @@
       <% end %>
       <div class="card-trip-infos">
         <div>
-          <h2><%= link_to jet.name, jet_path(jet)  %></h2>
+          <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
           <p><%= jet.model %> <%= jet.capacity %> Host: <%= jet.user.first_name %> Location: <%= jet.city.name %> </p>
         </div>
         <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
@@ -23,3 +23,11 @@
     <% end %>
   </div>
 </div>
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>

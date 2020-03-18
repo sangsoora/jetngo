@@ -40,33 +40,36 @@
 <% end %>
 <div class="container my-4">
   <div class="row justify-content-between">
-    <div class="col-6 text-center border">
-      <h2><%= @jet.name %>
+    <div class="col-6 text-center">
+      <h2><%= @jet.name.capitalize %>
         <%= link_to '', class: 'small-a', data: { toggle: "modal", target: "#jetEditModal" } do %> <i class="fas fa-pen"></i> <% end %>
       </h2>
-      <h3>Model: <%= @jet.model %></h3>
+      <p style="color: grey"><img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">    <%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+      <h3><%= @jet.model %></h3>
       <ul>
         <li><p>City: <%= @jet.city.name %></p></li>
         <li><p>Maximum Capacity: <%= @jet.capacity %></p></li>
-        <li><p>Host name: <%= @jet.user.first_name %> <%= @jet.user.last_name %></p></li>
+        <li><p></p></li>
         <li><p>Price per day: &euro; <%= @jet.unit_price%></p></li>
       </ul>
     </div>
 
 <!--     BOOKING FORM -->
-    <div class="col-6 text-center border">
-      <h2>Booking form</h2>
-      <%= link_to "Reserve", new_jet_booking_path(@jet), class: "btn btn-primary my-6"  %>
+    <div class="col-6 text-center">
+      <button class="btn btn-gradient">Book now</button>
+
     </div>
   </div>
-  <div class="row my-4 border">
-    <div class="col-12">
+  <hr>
+  <div class="row my-4">
+    <div class="col-12 text-center">
       <h2>Reviews</h2>
+      <p>No reviews yet!</p>
+      <a href="#">+ Add review</a>
     </div>
   </div>
   <div class="text-center my-4">
     <%= link_to "Back to list", root_path, class: "btn btn-ghost"%>
-    <%= link_to jet_path(@jet), method: :delete, data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
   </div>
 </div>
 <div class="modal fade" id="jetEditModal" tabindex="-1" role="dialog" aria-labelledby="jetEditModalLabel" aria-hidden="true">
