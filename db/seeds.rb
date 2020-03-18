@@ -7,13 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-# puts 'Creating 10 fake cities...'
-# 10.times do
-#   city = City.new(
-#     name:    Faker::Nation.capital_city
-#   )
-#   city.save!
-# end
+puts 'Creating 3 users'
+User.create(email: "leon@hotmail.com", password: "lewagon1", first_name: "le", last_name: "ellerb")
+User.create(email: "sangsoo@hotmail.com", password: "lewagon2", first_name: "sangoo", last_name: "ellerbr")
+User.create(email: "abder@hotmail.com", password: "lewagon3", first_name: "abder", last_name: "ellerbrock")
+puts 'Creating 3 fake cities...'
+3.times do
+  city = City.new(
+    name:    Faker::Nation.capital_city
+  )
+  city.save!
+end
 puts 'Finished!'
 
 puts 'Creating 10 fake jets...'
