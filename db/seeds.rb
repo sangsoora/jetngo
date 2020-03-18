@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-puts 'Creating 10 fake cities...'
-10.times do
-  city = City.new(
-    name:    Faker::Nation.capital_city
-  )
-  city.save!
-end
+# puts 'Creating 10 fake cities...'
+# 10.times do
+#   city = City.new(
+#     name:    Faker::Nation.capital_city
+#   )
+#   city.save!
+# end
 puts 'Finished!'
 
 puts 'Creating 10 fake jets...'

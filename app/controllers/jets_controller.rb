@@ -2,6 +2,12 @@ class JetsController < ApplicationController
   before_action :set_jet, only: %i[show update destroy]
   def index
     @jets = Jet.all
+    @markers = @jets.map do |jet|
+      {
+        lat: jet.city.geocode[0],
+        lng: jet.city.geocode[1]
+      }
+    end
   end
 
   def show
