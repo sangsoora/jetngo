@@ -5,7 +5,8 @@ class JetsController < ApplicationController
     @markers = @jets.map do |jet|
       {
         lat: jet.city.geocode[0],
-        lng: jet.city.geocode[1]
+        lng: jet.city.geocode[1],
+        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet })
       }
     end
   end
