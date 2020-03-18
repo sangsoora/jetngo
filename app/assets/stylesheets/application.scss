@@ -20,5 +20,8 @@ ul {
 }
 .small-a {
   font-size: 18px;
-  color: grey;
+  color: $gray;
+}
+label {
+  color: $main;
 }

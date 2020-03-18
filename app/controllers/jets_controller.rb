@@ -48,6 +48,8 @@ class JetsController < ApplicationController
   end
 
   def jet_params
+    params[:jet][:name].capitalize!
+    params[:jet][:model].capitalize!
     params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id, photos: [])
   end
 end

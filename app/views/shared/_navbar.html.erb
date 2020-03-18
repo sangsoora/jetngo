@@ -1,7 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon px-8">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <i class="fas fa-plane"></i>
-  <% end %>
+  <%= link_to image_tag('logo.jpg', width: 50, height:50), root_path %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Become a jet host", new_jet_path, class: "btn btn-ghost" %>
+          <%= link_to "Become a jet host", new_jet_path, class: "btn btn-ghost btn-host", style: "color: #ee534f" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -23,7 +21,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Become a jet host", new_jet_path, class: "btn btn-ghost" %>
+          <%= link_to "Become a jet host", new_jet_path, class: "btn btn-ghost btn-host" %>
         </li>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: "btn btn-ghost" %>

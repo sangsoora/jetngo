@@ -1,6 +1,6 @@
 <% if @jet.photos.attached? %>
   <% if @jet.photos.count == 1 %>
-    <div class="banner" style="padding: 250px 0; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>)"></div>
+    <div class="banner" style="padding: 250px 0; background-image: url(<%= cl_image_path @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>)"></div>
   <% elsif @jet.photos.count == 2 %>
     <div class="photo-container">
       <div class="left-container">
@@ -19,11 +19,24 @@
       </div>
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:200%;width:100%;', crop: :fill %>
+          <%= cl_image_tag photo.key, style: 'height:100%;width:200%;', crop: :fill %>
+          <div></div>
         <% end %>
       </div>
     </div>
-  <% elsif @jet.photos.count >= 4 %>
+  <% elsif @jet.photos.count == 4 %>
+    <div class="photo-container">
+      <div class="left-container">
+        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+      </div>
+      <div class="right-container">
+        <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
+          <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+        <% end %>
+        <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
+      </div>
+    </div>
+  <% elsif @jet.photos.count >= 5 %>
     <div class="photo-container">
       <div class="left-container">
         <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
@@ -36,7 +49,7 @@
     </div>
   <% end %>
 <% else %>
-  <div class="banner" style="padding: 250px 0; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('https://source.unsplash.com/1600x900/?plane', crop: :fill) %>);"></div>
+  <div class="banner" style="padding: 250px 0; background-image: url(<%= image_path('https://source.unsplash.com/1600x900/?plane', crop: :fill) %>);"></div>
 <% end %>
 <div class="container my-4">
   <div class="row justify-content-between">
