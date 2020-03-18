@@ -14,7 +14,7 @@
       <div class="card-trip-infos">
         <div>
           <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
-          <p><%= jet.model %> <%= jet.capacity %> Host: <%= jet.user.first_name %> Location: <%= jet.city.name %> </p>
+          <p><%= jet.model %> Location: <%= jet.city.name %> </p>
         </div>
         <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
         <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
