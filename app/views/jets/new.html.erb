@@ -9,7 +9,7 @@
         <%= f.input :unit_price, collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
         <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.submit value: 'Add Jet', class: 'btn btn-primary' %>
+        <%= f.submit value: 'Add Jet', class: 'btn btn-gradient' %>
       <% end %>
 
       <%= link_to "Back to list", root_path %>
