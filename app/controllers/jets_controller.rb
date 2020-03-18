@@ -1,11 +1,10 @@
 class JetsController < ApplicationController
-  before_action :set_jet, only: %i[show edit update destroy]
+  before_action :set_jet, only: %i[show update destroy]
   def index
     @jets = Jet.all
   end
 
   def show
-    @jet = Jet.find(params[:id])
   end
 
   def new
@@ -21,6 +20,19 @@ class JetsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    if @jet.update(jet_params)
+      redirect_to jet_path(@jet)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @jet.destroy
+    redirect_to root_path
   end
 
   private
