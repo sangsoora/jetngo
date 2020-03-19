@@ -1,7 +1,17 @@
 class JetsController < ApplicationController
   before_action :set_jet, only: %i[show update destroy]
   def index
-    @jets = Jet.all
+    if params[:query].present?
+      # sql_query = " \
+      #     cities.name @@ :query \
+      #     OR jets.model @@ :query \
+      #     "
+      # @jets = Jet.joins(:city).where(sql_query, query: "%#{params[:query]}%")
+      @jets = Jet.search_by_name_and_model(params[:query])
+    else
+      @jets = Jet.all
+    end
+
     @markers = @jets.map do |jet|
       {
         # lat: jet.city.geocode[0],
