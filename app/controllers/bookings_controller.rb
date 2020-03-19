@@ -1,5 +1,11 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  def index
+    @bookings = current_user.bookings
+    @past_bookings = @bookings.select{|booking| booking.end_date < Date.today}
+    @upcoming_bookings = @bookings.select{|booking| booking.end_date >= Date.today}
+  end
+
   def show
   end
 
@@ -24,6 +30,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking.update(booking_params)
+    redirect_back(fallback_location: root_path)
+  end
+
   def destroy
     @booking.destroy
     redirect_to root_path
@@ -36,6 +47,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :total_price, :jet_id, :user_id)
+    params.require(:booking).permit(:start_date, :end_date, :total_price, :jet_id, :user_id, :status)
   end
 end
