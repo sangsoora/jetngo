@@ -1,3 +1,14 @@
+
+<% if params[:query] %>
+  <!-- since the user can input 2 cities, we take the first one -->
+  <div class="banner" style="background-size: cover; object-fit: scale-down; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= "https://source.unsplash.com/featured/?#{params[:query].split.first},city" %>);">
+    <div class="container">
+      <h1>Rent a private <strong>jet</strong> in <%= params[:query].split.first.capitalize %></h1>
+      <p>Travel the world with it</p>
+    </div>
+  </div>
+
+<% else %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('jet.jpg') %>);">
   <div class="container">
     <h1>jetNgo allows <strong>people</strong> to <strong>fly anywhere</strong>!</h1>
@@ -8,16 +19,12 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Find a movie"
+            placeholder: "Find a jet"
           %>
           <%= submit_tag "Search", class: "btn btn-gradient"%>
         <% end %>
-
-<!--         <input class="form-control string required" type="text" name="search[query]" id="search_query" value="Search for a jet now"/>
-        <button name="button" type="submit" class="btn btn-gradient" style="padding: 0 8px;">
-          <i class="fas fa-search"></i> Search
-        </button> -->
       </div>
     <% end %>
   </div>
 </div>
+<% end %>

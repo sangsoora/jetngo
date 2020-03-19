@@ -1,4 +1,33 @@
 <%= render 'shared/banner' %>
+<% if params[:query] %>
+  <div class="container">
+    <div class="mt-4">
+      <h2 class="text-center">All available private jets in <%= params[:query].split.first.capitalize %>!</h2>
+    </div>
+    <div class="cards my-4">
+      <% @jets.each do |jet| %>
+      <div class="card-trip">
+        <% if jet.photos.attached? %>
+            <%= cl_image_tag jet.photos.first.key, crop: :fill %>
+        <% else %>
+        <img src="https://source.unsplash.com/1600x900/?plane" />
+        <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
+            <p><%= jet.model %> Location: <%= jet.city.name %> </p>
+          </div>
+          <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
+          <img
+            src="https://kitt.lewagon.com/placeholder/users/random"
+            class="card-trip-user avatar-bordered" />
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+<% else %>
 <div class="container">
   <div class="mt-4">
     <h2 class="text-center">All available private jets!</h2>
@@ -17,7 +46,9 @@
           <p><%= jet.model %> Location: <%= jet.city.name %> </p>
         </div>
         <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+        <img
+          src="https://kitt.lewagon.com/placeholder/users/random"
+          class="card-trip-user avatar-bordered" />
       </div>
     </div>
     <% end %>
@@ -31,3 +62,5 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+
+<% end %>
