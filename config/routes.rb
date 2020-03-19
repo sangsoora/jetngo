@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'bookings/show'
   get 'bookings/new'
+  get 'dashboard', to: 'dashboards#show'
   devise_for :users
   root to: 'jets#index'
   resources :jets, except: :index do
