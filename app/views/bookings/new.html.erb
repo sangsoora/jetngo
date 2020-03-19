@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="col-6 offset-3">
+      <h2>Booking</h2>
+
+      <%= simple_form_for [@jet, @booking] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.button :submit, 'Send a booking request', class: 'btn btn-gradient' %>
+      <% end %>
+    </div>
+  </div>
+</div>
