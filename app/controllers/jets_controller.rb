@@ -14,11 +14,10 @@ class JetsController < ApplicationController
 
     @markers = @jets.map do |jet|
       {
-        # lat: jet.city.geocode[0],
-        # lng: jet.city.geocode[1],
         lat: jet.city.latitude,
         lng: jet.city.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet })
+        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet }),
+        image_url: helpers.asset_url('logo.jpg')
       }
     end
   end
