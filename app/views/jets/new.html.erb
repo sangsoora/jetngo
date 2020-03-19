@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <%= image_tag('host.jpeg', style: 'margin-top:24px;width:100%;')%>
-      <%= image_tag('host1.jpeg', style: 'width:100%;')%>
+      <%= image_tag('host.jpeg', style: 'margin-top:32px;width:100%;')%>
+      <%= image_tag('host1.jpeg', style: 'margin-top:24px;width:100%;')%>
     </div>
     <div class="col-6">
       <h2 class="mt-4">Become a jet host</h2>
@@ -12,6 +12,8 @@
         <%= f.input :capacity, collection: (6..15)  %>
         <%= f.input :unit_price, label: 'Price per day', collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
         <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+        <%= f.input :description%>
+        <%= f.input :departure_time%>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.button :submit, 'Add a jet', class: 'btn btn-gradient' %>
       <% end %>

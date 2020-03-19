@@ -24,6 +24,7 @@ class JetsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -63,6 +64,6 @@ class JetsController < ApplicationController
   def jet_params
     params[:jet][:name].capitalize!
     params[:jet][:model].capitalize!
-    params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id, photos: [])
+    params.require(:jet).permit(:name, :model, :capacity, :unit_price, :description, :departure_time, :user_id, :city_id, photos: [])
   end
 end

@@ -70,7 +70,13 @@
       </ul>
     </div>
     <div class="col-6 text-center">
-      <%= link_to 'Book now', new_jet_booking_path(@jet), class: 'btn btn-gradient' %>
+      <%= simple_form_for [@jet, @booking] do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.button :submit, 'Book now', class: 'btn btn-gradient' %>
+      <% end %>
     </div>
   </div>
   <hr>
