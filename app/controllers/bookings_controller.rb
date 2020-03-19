@@ -30,11 +30,8 @@ class BookingsController < ApplicationController
   end
 
   def update
-    if @booking.update(booking_params)
-      redirect_to booking_path(@booking)
-    else
-      render :edit
-    end
+    @booking.update(booking_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
