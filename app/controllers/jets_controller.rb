@@ -6,12 +6,14 @@ class JetsController < ApplicationController
       {
         lat: jet.city.geocode[0],
         lng: jet.city.geocode[1],
-        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet })
+        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet }),
+        image_url: helpers.asset_url('logo.jpg')
       }
     end
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -51,6 +53,6 @@ class JetsController < ApplicationController
   def jet_params
     params[:jet][:name].capitalize!
     params[:jet][:model].capitalize!
-    params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id, photos: [])
+    params.require(:jet).permit(:name, :model, :capacity, :unit_price, :description, :departure_time, :user_id, :city_id, photos: [])
   end
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'bookings/show'
-  get 'bookings/new'
+  patch 'bookings/:id/send', to: 'bookings#send', as: :send
+  patch 'bookings/:id/accept', to: 'bookings#accept', as: :accept
+  patch 'bookings/:id/decline', to: 'bookings#decline', as: :decline
+  patch 'bookings/:id/cancel', to: 'bookings#cancel', as: :cancel
   devise_for :users
   root to: 'jets#index'
   resources :jets, except: :index do

@@ -1,10 +1,86 @@
-<h2>Booking confirmation</h2>
-<p><%= @booking.start_date %></p>
-<p><%= @booking.end_date %></p>
-<p><%= (@booking.end_date - @booking.start_date).to_i %> days</p>
-<p><%= @booking.total_price %></p>
-<p><%= @booking.jet.name %></p>
-<p><%= @booking.jet.model %></p>
-<p><%= @booking.jet.capacity %></p>
-<p><%= @booking.jet.user.first_name %> <%= @booking.jet.user.last_name %></p>
-<p><%= @booking.jet.city.name %></p>
+<div class="container my-4">
+  <h2 class=" text-center">
+  <% if @booking.status == 'send' %>
+    Are you ready to fly?
+  <% elsif @booking.status == 'pending' %>
+    Waiting for your host to accept your request!
+  <% elsif @booking.status == 'accepted' %>
+    It's done! Time to fly!
+  <% elsif @booking.status == 'declined' %>
+    Sorry your request has been declined.
+  <% elsif @booking.status == 'cancelled' %>
+    This booking has been cancelled.
+  <% elsif @booking.status == 'done' %>
+    It was a good fly with you!
+  <% end %>
+  </h2>
+  <div class="row my-4">
+    <div class="col-6 text-center">
+      <div>
+        <% if @booking.jet.photos.attached? && @booking.jet.photos.count >= 2%>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <%= cl_image_tag @booking.jet.photos.first.key, height: 300, width:540, crop: :fill, class: 'd-block w-100'%>
+              </div>
+              <% @booking.jet.photos.drop(1).each do |photo| %>
+                <div class="carousel-item">
+                  <%= cl_image_tag photo.key, height: 300, width:540, crop: :fill, class: 'd-block w-100' %>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        <% elsif @booking.jet.photos.attached? && @booking.jet.photos.count == 1 %>
+          <%= cl_image_tag @booking.jet.photos.first.key, height: 300, width:540, crop: :fill %>
+        <% else %>
+          <%= image_tag('https://source.unsplash.com/1600x900/?plane', height: 300, width:540, crop: :fill) %>
+        <% end %>
+        <div class="my-4">
+        <h3><strong><%= (@booking.end_date - @booking.start_date).to_i + 1%> days for <%= @booking.jet.name %></strong></h3>
+        </div>
+        <div class="my-4">
+          <p>From <%= @booking.start_date %> to <%= @booking.end_date %> (<%= (@booking.end_date - @booking.start_date).to_i + 1%> days) </p>
+          <p>Total Cost: &euro; <%= @booking.total_price %></p>
+          <p>Departing form <%= @booking.jet.city.name %> at <%= @booking.jet.departure_time %></p>
+          <p>Model: <%= @booking.jet.model %></p>
+          <p>Full capacity: <%= @booking.jet.capacity %></p>
+          <p>Host: <%= @booking.jet.user.first_name %> <%= @booking.jet.user.last_name %></p>
+        </div>
+      </div>
+    </div>
+    <div class="div">
+      <div
+        id="map"
+        style="width: 540px;height: 400px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+  </div>
+  <div class="row text-center justify-content-around">
+    <% if @booking.status == 'send' %>
+      <div class="col-6">
+        <%= simple_form_for @booking do |f| %>
+          <%= f.input :status, :as => :hidden, :input_html => { :value => "pending" } %>
+          <%= f.button :submit, 'Send request', class: 'btn btn-gradient' %>
+        <% end %>
+      </div>
+      <div class="col-6 mt-3">
+        <%= link_to 'Cancel', booking_path(@booking), method: :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+      </div>
+    <% else %>
+      <div class="col-6 mt-3">
+        <%= link_to 'Back to list', root_path, class: 'btn btn-ghost' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
