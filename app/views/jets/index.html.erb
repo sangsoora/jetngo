@@ -23,7 +23,7 @@
     <% end %>
   </div>
 </div>
-
+<% unless params[:query].present? %>
 <div
   id="map"
   style="width: 100vw;
@@ -31,3 +31,4 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+<% end %>

@@ -1,0 +1,15 @@
+1. What's this part doing  "-m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb" in
+"rails new \
+  --webpack \
+  -T --database postgresql \
+  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
+  restaurants_with_pundit"
+
+2. Why do we define the class Scope < Scope inside RestaurantPolicy?
+
+
+Notes:
+
+1. Button on first page
+2. Margin on sign-up and log-in
+3. CSS unorderd list edit

@@ -1,13 +1,22 @@
 class JetsController < ApplicationController
   before_action :set_jet, only: %i[show update destroy]
   def index
-    @jets = Jet.all
-    @markers = @jets.map do |jet|
-      {
-        lat: jet.city.geocode[0],
-        lng: jet.city.geocode[1],
-        infoWindow: render_to_string(partial: "info_window", locals: { jet: jet })
-      }
+    search = params[:search]\
+
+    if search
+      @jets = Jet.search_by_city_and_model(search[:query])
+    else
+      @jets = Jet.all
+      @markers = @jets.map do |jet|
+        {
+          # lat: jet.city.geocode[0],
+          # lng: jet.city.geocode[1],
+          lat: jet.city.latitude,
+          lng: jet.city.longitude,
+
+          infoWindow: render_to_string(partial: "info_window", locals: { jet: jet })
+        }
+      end
     end
   end
 
