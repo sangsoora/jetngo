@@ -2,7 +2,8 @@
 <% if params[:query] %>
   <div class="container">
     <div class="mt-4">
-      <h2 class="text-center">All available private jets in <%= params[:query].split.first.capitalize %>!</h2>
+      <!-- <h2 class="text-center">All available private jets in <%= params[:query].split.first.capitalize %>!</h2> -->
+      <h2 class="text-center">All available private jets in <%= @jets.first.city.name.capitalize %>!</h2>
     </div>
     <div class="cards my-4">
       <% @jets.each do |jet| %>

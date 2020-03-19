@@ -3,7 +3,8 @@
   <!-- since the user can input 2 cities, we take the first one -->
   <div class="banner" style="background-size: cover; object-fit: scale-down; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= "https://source.unsplash.com/featured/?#{params[:query].split.first},city" %>);">
     <div class="container">
-      <h1>Rent a private <strong>jet</strong> in <%= params[:query].split.first.capitalize %></h1>
+      <!-- <h1>Rent a private <strong>jet</strong> in <%= params[:query].split.first.capitalize %></h1> -->
+      <h1>Rent a private <strong>jet</strong> in <%= @jets.first.city.name.capitalize %></h1>
       <p>Travel the world with it</p>
     </div>
   </div>
