@@ -24,6 +24,7 @@ class JetsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @jet_reviews = @jet.jet_reviews
   end
 
   def new
