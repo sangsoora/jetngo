@@ -7,11 +7,14 @@
     <div class="col-6">
       <h2 class="mt-4">Become a jet host</h2>
       <%= simple_form_for @jet do |f| %>
-        <%= f.input :model, placeholder: "Model of the jet" %>
-        <%= f.input :size, placeholder: "Name of the jet"%>
-        <%= f.input :capacity, collection: (6..15)  %>
-        <%= f.input :unit_price, label: 'Price per day', collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
-        <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+        <%= f.input :model, placeholder: "Model" %>
+        <%= f.input :size, prompt: "Size category", collection: ["Small Prop", "Small Jet", "Medium Jet", "Regional Airliner"]%>
+        <%= f.input :capacity, prompt: "Number of seats", collection: (4..25)  %>
+        <%= f.input :speed, placeholder: "Speed in knots" %>
+        <%= f.input :range, placeholder: "Range in nautical miles"  %>
+        <%= f.input :flight_time, prompt: "Flight time in hours", collection: (11..27).to_a  %>
+        <%= f.input :unit_price, placeholder: 'Price per day'  %>
+        <%= f.association :city, prompt: "Choose a City", collection: City.order(:name)%>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.button :submit, 'Add a jet', class: 'btn btn-gradient' %>
       <% end %>

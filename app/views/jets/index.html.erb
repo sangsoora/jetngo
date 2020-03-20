@@ -16,11 +16,9 @@
         <div class="card-trip-infos">
           <div>
             <h2><%= link_to jet.model, jet_path(jet)  %></h2>
+            <p><strong><%= jet.size %></strong></p>
             <p>Location: <%= jet.city.name %> </p>
             <p>Seats: <%= jet.capacity %></p>
-            <p>Speed: <%= jet.speed %> kts</p>
-            <p>Range: <%= jet.range %> nm</p>
-            <p>Flight Time: <%= jet.flight_time %> hrs</p>
           </div>
           <h2 class="card-trip-pricing">&euro; <%= jet.read_format(jet.unit_price) %></h2>
           <img
@@ -48,11 +46,9 @@
       <div class="card-trip-infos">
         <div>
           <h2><%= link_to jet.model, jet_path(jet)  %></h2>
+          <p><strong><%= jet.size %></strong></p>
           <p>Location: <%= jet.city.name %> </p>
           <p>Seats: <%= jet.capacity %></p>
-          <p>Speed: <%= jet.speed %> kts</p>
-          <p>Range: <%= jet.range %> nm</p>
-          <p>Flight Time: <%= jet.flight_time %> hrs</p>
         </div>
         <h2 class="card-trip-pricing">&euro; <%= jet.read_format(jet.unit_price) %></h2>
         <img

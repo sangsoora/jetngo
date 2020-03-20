@@ -8,6 +8,11 @@ class JetsController < ApplicationController
       #     "
       # @jets = Jet.joins(:city).where(sql_query, query: "%#{params[:query]}%")
       @jets = Jet.search_by_name_and_model(params[:query])
+      if @jets.empty?
+        @city_name = params[:query].split.first.capitalize
+      else
+        @city_name = @jets.first.city.name
+      end
     else
       @jets = Jet.all
     end
@@ -61,8 +66,6 @@ class JetsController < ApplicationController
   end
 
   def jet_params
-    params[:jet][:name].capitalize!
-    params[:jet][:model].capitalize!
-    params.require(:jet).permit(:name, :model, :capacity, :unit_price,:user_id, :city_id, photos: [])
+    params.require(:jet).permit(:model, :size, :capacity, :speed, :range, :flight_time, :unit_price, :user_id, :city_id, photos: [])
   end
 end
