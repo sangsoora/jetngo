@@ -70,6 +70,20 @@
           <p>Total Cost: <strong><span style='color: #EE534F;'>&euro; <%= @booking.total_price %></span></strong></p>
           <p>Host: <strong><%= @booking.jet.user.full_name %></strong> - <%= link_to @booking.jet.user.email, '' %></p>
         </div>
+        <div class="div">
+          <h3>Reviews</h3>
+          <% if @reviews.any? %>
+            <ul>
+              <% @reviews.each do |review| %>
+                <li><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %>
+                  <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure to delete this review?"} do %> <i class="far fa-trash-alt"></i> <% end %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p><em><span style="color: grey">No review yet!</span></em></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="div">
@@ -113,14 +127,14 @@
         <div class="col-6">
           <%= simple_form_for @booking do |f| %>
           <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-          <%= f.submit "Cancel this booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
           <% end %>
         </div>
       <% else %>
         <div class="col-6">
           <%= simple_form_for @booking do |f| %>
           <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-          <%= f.submit "Cancel this booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
           <% end %>
         </div>
       <% end %>
@@ -140,7 +154,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+      <div class="modal-body text-left">
+        <%= simple_form_for [@booking, @review] do |f| %>
+          <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5]  %>
+          <%= f.input :content %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-dismiss="modal">Close</button>
+        <%= f.submit class: 'btn btn-gradient' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

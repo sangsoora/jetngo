@@ -14,7 +14,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'pending' %>
-              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+              <li><%= link_to "Booking for #{booking.jet.name}", booking_path(booking) %>
                 <p><%= booking.start_date %> to <%= booking.end_date %></p>
               </li>
             <% end %>

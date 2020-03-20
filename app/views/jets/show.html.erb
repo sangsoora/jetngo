@@ -113,7 +113,15 @@
   <div class="row my-4">
     <div class="col-12 text-center">
       <h2>Reviews</h2>
-      <p>No reviews yet!</p>
+      <% if @jet_reviews.any? %>
+        <ul>
+          <% @jet_reviews.each do |review| %>
+            <li><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %></p></li>
+          <% end %>
+        </ul>
+      <% else %>
+       <p><em><span class="grey">No review yet!</span></em></p>
+      <% end %>
     </div>
   </div>
   <div class="text-center my-4">
