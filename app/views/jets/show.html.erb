@@ -4,11 +4,11 @@
     <% elsif @jet.photos.count == 2 %>
     <div class="photo-container">
       <div class="left-container">
-      <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
       </div>
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
-        <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
+          <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
         <% end %>
       </div>
     </div>
