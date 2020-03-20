@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
       lng: @booking.jet.city.longitude,
       image_url: helpers.asset_url('logo.jpg')
     }]
-    @review = Review.new
   end
 
   def new

@@ -1,5 +1,0 @@
-<%= simple_form_for([ booking, review ], remote: true) do |f| %>
-  <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5]  %>
-  <%= f.input :content %>
-  <%= f.button :submit, class: 'btn btn-gradient' %>
-<% end %>
