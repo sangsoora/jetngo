@@ -102,20 +102,45 @@
       <div class="col-6">
         <%= simple_form_for @booking do |f| %>
         <%= f.input :status, input_html: {value: 'declined'}, as: :hidden %>
-        <%= f.submit "Decline", class: 'btn btn-ghost'%>
+        <%= f.submit "Decline", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
         <% end %>
       </div>
     <% elsif @booking.status == 'accepted'%>
-      <div class="col-6">
-        <%= simple_form_for @booking do |f| %>
-        <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-        <%= f.submit "Cancel this booking", class: 'btn btn-gradient'%>
-        <% end %>
-      </div>
+      <% if current_user == @booking.user %>
+        <div class="col-6 mt-3">
+          <button type="button" class="btn btn-gradient" data-toggle="modal" data-target="#reviewModal">Add a review</button>
+        </div>
+        <div class="col-6">
+          <%= simple_form_for @booking do |f| %>
+          <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
+          <%= f.submit "Cancel this booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="col-6">
+          <%= simple_form_for @booking do |f| %>
+          <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
+          <%= f.submit "Cancel this booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <% end %>
+        </div>
+      <% end %>
     <% else %>
       <div class="col-6 mt-3">
         <%= link_to 'Back to list', root_path, class: 'btn btn-ghost' %>
       </div>
     <% end %>
+  </div>
+</div>
+<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="reviewModalLabel">Create review</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    </div>
   </div>
 </div>

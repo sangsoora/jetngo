@@ -6,8 +6,12 @@
     <div class="col-3 box-grey">
       <h3 class="my-4">My jets</h3>
       <ul>
-        <% @jets.each do |jet| %>
-          <li><%= link_to jet.name, jet_path(jet) %></li>
+        <% if @jets.empty? %>
+          <%= link_to 'Become a jet host', new_jet_path, class: 'btn btn-ghost btn-host' %>
+        <% else %>
+          <% @jets.each do |jet| %>
+            <li><%= link_to jet.name, jet_path(jet)%></li>
+          <% end %>
         <% end %>
       </ul>
     </div>
