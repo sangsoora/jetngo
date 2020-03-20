@@ -13,7 +13,6 @@ class BookingsController < ApplicationController
       image_url: helpers.asset_url('logo.jpg')
     }]
     @review = Review.new
-    @reviews = Review.where(booking_id: params[:id])
   end
 
   def new
