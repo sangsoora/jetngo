@@ -1,7 +1,7 @@
 <% if @jet.photos.attached? %>
   <% if @jet.photos.count == 1 %>
     <div class="banner" style="padding: 250px 0; background-image: url(<%= cl_image_path @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>)"></div>
-    <% elsif @jet.photos.count == 2 %>
+  <% elsif @jet.photos.count == 2 %>
     <div class="photo-container">
       <div class="left-container">
         <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
@@ -12,7 +12,7 @@
         <% end %>
       </div>
     </div>
-  <% elsif @jet.photos.count == 2 %>
+  <% elsif @jet.photos.count == 3 %>
     <div class="photo-container">
       <div class="left-container">
         <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
@@ -20,7 +20,7 @@
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
           <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
-        <div></div>
+          <div></div>
         <% end %>
       </div>
     </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="right-container">
       <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
-      <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+        <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
       <% end %>
         <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
       </div>
@@ -94,21 +94,21 @@
               <%= link_to jet_path(@jet), method: :delete, class: 'small-a', data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
             </h1>
           </div>
-          <div class="col-3 text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
-          </div>
-        </div>
-        <div class="row" style="color: grey;">
-          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
-          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
-          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
-        </div>
-        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
-<div class="box-grey">
-          <p class="text-justify"><%= @jet.description %></p>
+        <div class="col-3 text-center">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+          <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
         </div>
       </div>
+      <div class="row" style="color: grey;">
+        <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+         <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+        <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+      </div>
+      <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+      <div class="box-grey">
+        <p class="text-justify"><%= @jet.description %></p>
+      </div>
+    </div>
     <% end %>
   </div>
   <hr>
