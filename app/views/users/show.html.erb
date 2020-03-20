@@ -129,7 +129,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'declined' %>
-             <li><%= link_to "Booking fof #{booking.jet.nam.capitalize}", booking_path(booking) %>
+             <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
                <p><%= booking.start_date %> to <%= booking.end_date %></p>
              </li>
             <% end %>

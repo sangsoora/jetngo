@@ -70,7 +70,8 @@
           <p>Total Cost: <strong><span style='color: #EE534F;'>&euro; <%= @booking.total_price %></span></strong></p>
           <p>Host: <strong><%= @booking.jet.user.full_name %></strong> - <%= link_to @booking.jet.user.email, '' %></p>
         </div>
-        <div class="div">
+        <% if @booking.status == 'accepted' %>
+          <div class="div">
           <h3>Reviews</h3>
           <% if @booking.reviews.any? %>
             <ul  id="reviews">
@@ -89,6 +90,8 @@
             <% end %>
           </div>
         </div>
+        <% end %>
+
       </div>
     </div>
     <div class="div">
