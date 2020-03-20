@@ -24,7 +24,6 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to booking_path(@review.booking)
   end
 
   private
