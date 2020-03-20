@@ -13,7 +13,7 @@
     </div>
     <div class="col-3 box-grey">
       <h3 class="my-4">Bookings as a host</h3>
-      <p>Pending bookings</p>
+      <p class="grey">Pending bookings</p>
       <ul>
         <% @booking_requests.each do |booking| %>
           <% if booking.status == 'pending' %>
@@ -21,7 +21,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Accepted bookings</p>
+      <p class="grey">Accepted bookings</p>
       <ul>
         <% @booking_requests.each do |booking| %>
           <% if booking.status == 'accepted' %>
@@ -29,7 +29,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Declined bookings</p>
+      <p class="grey">Declined bookings</p>
       <ul>
         <% @booking_requests.each do |booking| %>
           <% if booking.status == 'declined' %>
@@ -37,7 +37,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Cancelled bookings</p>
+      <p class="grey">Cancelled bookings</p>
       <ul>
         <% @booking_requests.each do |booking| %>
           <% if booking.status == 'cancelled' %>
@@ -48,7 +48,7 @@
     </div>
     <div class="col-3 box-grey">
       <h3 class="my-4">Bookings as a guest</h3>
-      <p>Pending bookings</p>
+      <p class="grey">Pending bookings</p>
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.status == 'pending' %>
@@ -56,7 +56,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Accepted bookings</p>
+      <p class="grey">Accepted bookings</p>
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.status == 'accepted' %>
@@ -64,7 +64,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Declined bookings</p>
+      <p class="grey">Declined bookings</p>
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.status == 'declined' %>
@@ -72,7 +72,7 @@
           <% end %>
         <% end %>
       </ul>
-      <p>Cancelled bookings</p>
+      <p class="grey">Cancelled bookings</p>
       <ul>
         <% @bookings.each do |booking| %>
           <% if booking.status == 'cancelled' %>
@@ -82,6 +82,4 @@
       </ul>
     </div>
   </div>
-
-
 </div>

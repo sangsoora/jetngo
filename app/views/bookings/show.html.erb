@@ -56,20 +56,26 @@
         <div class="my-4">
         <h3><strong><%= (@booking.end_date - @booking.start_date).to_i + 1%> days for <%= @booking.jet.name %></strong></h3>
         </div>
-        <div class="my-4">
-          <p>From <%= @booking.start_date %> to <%= @booking.end_date %> (<%= (@booking.end_date - @booking.start_date).to_i + 1%> days) </p>
-          <p>Total Cost: &euro; <%= @booking.total_price %></p>
-          <p>Departing form <%= @booking.jet.city.name %> at <%= @booking.jet.departure_time %></p>
-          <p>Model: <%= @booking.jet.model %></p>
-          <p>Full capacity: <%= @booking.jet.capacity %></p>
-          <p>Host: <%= @booking.jet.user.first_name %> <%= @booking.jet.user.last_name %></p>
+        <div class="row" style="color: grey;">
+          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @booking.jet.model %></p></div>
+          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @booking.jet.city.name %></p></div>
+          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @booking.jet.capacity %></i></p></div>
+        </div>
+        <div class="box-grey">
+          <p class="text-justify"><%= @booking.jet.description %></p>
+        </div>
+        <div class="my-4 text-left">
+          <p>Check in: <strong><%= @booking.start_date %></strong></p>
+          <p>Check out: <strong><%= @booking.end_date %></strong></p>
+          <p>Total Cost: <strong><span style='color: #EE534F;'>&euro; <%= @booking.total_price %></span></strong></p>
+          <p>Host: <strong><%= @booking.jet.user.full_name %></strong> - <%= link_to @booking.jet.user.email, '' %></p>
         </div>
       </div>
     </div>
     <div class="div">
       <div
         id="map"
-        style="width: 540px;height: 400px;"
+        style="width: 540px;height: 100%;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
@@ -111,6 +117,5 @@
         <%= link_to 'Back to list', root_path, class: 'btn btn-ghost' %>
       </div>
     <% end %>
-
   </div>
 </div>
