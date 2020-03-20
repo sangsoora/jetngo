@@ -14,7 +14,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'pending' %>
-              <li><%= link_to "Booking for #{booking.jet.name.capitalize}", booking_path(booking) %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                 <p><%= booking.start_date %> to <%= booking.end_date %></p>
               </li>
             <% end %>
@@ -24,7 +24,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'accepted' %>
-              <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                 <p><%= booking.start_date %> to <%= booking.end_date %></p>
               </li>
             <% end %>
@@ -34,7 +34,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'declined' %>
-             <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                <p><%= booking.start_date %> to <%= booking.end_date %></p>
              </li>
             <% end %>
@@ -44,7 +44,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'cancelled' %>
-             <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                <p><%= booking.start_date %> to <%= booking.end_date %></p>
              </li>
             <% end %>
@@ -56,7 +56,7 @@
         <h3 class="my-4">My jets</h3>
         <ul>
           <% @jets.each do |jet| %>
-            <li><%= link_to jet.name.capitalize, jet_path(jet)%></li>
+            <li><%= link_to jet.name, jet_path(jet)%></li>
           <% end %>
         </ul>
       </div>
@@ -109,7 +109,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'pending' %>
-              <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                 <p><%= booking.start_date %> to <%= booking.end_date %></p>
               </li>
             <% end %>
@@ -119,7 +119,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'accepted' %>
-              <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                 <p><%= booking.start_date %> to <%= booking.end_date %></p>
               </li>
             <% end %>
@@ -129,7 +129,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'declined' %>
-             <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                <p><%= booking.start_date %> to <%= booking.end_date %></p>
              </li>
             <% end %>
@@ -139,7 +139,7 @@
         <ul>
           <% @bookings.each do |booking| %>
             <% if booking.status == 'cancelled' %>
-             <li><%= link_to "Booking fof #{booking.jet.name.capitalize}", booking_path(booking) %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
                <p><%= booking.start_date %> to <%= booking.end_date %></p>
              </li>
             <% end %>

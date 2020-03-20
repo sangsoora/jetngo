@@ -14,22 +14,18 @@
   <div class="container">
     <h1>jetNgo allows <strong>people</strong> to <strong>fly anywhere</strong>!</h1>
     <p>Go anywhere you want.</p>
-    <div class="row">
-      <div class="col-4">
-        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-          <div class="search-form-control form-group">
-            <%= form_tag jets_path, method: :get do %>
-              <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Find a jet now"
-              %>
-              <%= submit_tag "Search", class: "btn btn-gradient"%>
-            <% end %>
-          </div>
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <%= form_tag jets_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a jet now"
+          %>
+          <%= submit_tag "Search", class: "btn btn-gradient"%>
         <% end %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
 <% end %>
