@@ -12,14 +12,14 @@
         <% end %>
       </div>
     </div>
-  <% elsif @jet.photos.count == 3 %>
+  <% elsif @jet.photos.count == 2 %>
     <div class="photo-container">
       <div class="left-container">
         <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
       </div>
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
-        <%= cl_image_tag photo.key, style: 'height:100%;width:200%;', crop: :fill %>
+          <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
         <div></div>
         <% end %>
       </div>
@@ -33,9 +33,9 @@
       <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
       <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
       <% end %>
-      <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
+        <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
+      </div>
     </div>
-  </div>
   <% elsif @jet.photos.count >= 5 %>
     <div class="photo-container">
       <div class="left-container">
@@ -43,38 +43,38 @@
       </div>
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
-        <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+          <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
         <% end %>
       </div>
     </div>
   <% end %>
-  <% else %>
+<% else %>
   <div class="banner" style="padding: 250px 0; background-image: url(<%= image_path('https://source.unsplash.com/1600x900/?plane', crop: :fill) %>);"></div>
 <% end %>
 
 <div class="container my-4">
   <div class="row justify-content-between">
     <% if current_user != @jet.user %>
-    <div class="col-6">
-      <div class="row">
-        <div class="col-9">
-          <h1><%= @jet.name.capitalize %></h1>
-        </div>
-          <div class="col-3 text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-9">
+            <h1><%= @jet.name.capitalize %></h1>
           </div>
+            <div class="col-3 text-center">
+              <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+              <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+            </div>
+          </div>
+          <div class="row" style="color: grey;">
+            <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+            <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+            <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+          </div>
+        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+        <div class="box-grey">
+          <p class="text-justify"><%= @jet.description %></p>
         </div>
-        <div class="row" style="color: grey;">
-          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
-          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
-          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
-        </div>
-      <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
-      <div class="box-grey">
-        <p class="text-justify"><%= @jet.description %></p>
       </div>
-    </div>
     <div class="col-6 text-center">
         <%= simple_form_for [@jet, @booking] do |f| %>
           <%= f.error_notification %>
