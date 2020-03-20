@@ -15,10 +15,14 @@
         <% end %>
         <div class="card-trip-infos">
           <div>
-            <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
-            <p><%= jet.model %> Location: <%= jet.city.name %> </p>
+            <h2><%= link_to jet.model, jet_path(jet)  %></h2>
+            <p>Location: <%= jet.city.name %> </p>
+            <p>Seats: <%= jet.capacity %></p>
+            <p>Speed: <%= jet.speed %> kts</p>
+            <p>Range: <%= jet.range %> nm</p>
+            <p>Flight Time: <%= jet.flight_time %> hrs</p>
           </div>
-          <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
+          <h2 class="card-trip-pricing">&euro; <%= jet.read_format(jet.unit_price) %></h2>
           <img
             src="https://kitt.lewagon.com/placeholder/users/random"
             class="card-trip-user avatar-bordered" />
@@ -35,7 +39,7 @@
   </div>
   <div class="cards my-4">
     <% @jets.each do |jet| %>
-    <div class="card-trip">
+      <div class="card-trip">
       <% if jet.photos.attached? %>
           <%= cl_image_tag jet.photos.first.key, crop: :fill %>
       <% else %>
@@ -43,10 +47,14 @@
       <% end %>
       <div class="card-trip-infos">
         <div>
-          <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
-          <p><%= jet.model %> Location: <%= jet.city.name %> </p>
+          <h2><%= link_to jet.model, jet_path(jet)  %></h2>
+          <p>Location: <%= jet.city.name %> </p>
+          <p>Seats: <%= jet.capacity %></p>
+          <p>Speed: <%= jet.speed %> kts</p>
+          <p>Range: <%= jet.range %> nm</p>
+          <p>Flight Time: <%= jet.flight_time %> hrs</p>
         </div>
-        <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
+        <h2 class="card-trip-pricing">&euro; <%= jet.read_format(jet.unit_price) %></h2>
         <img
           src="https://kitt.lewagon.com/placeholder/users/random"
           class="card-trip-user avatar-bordered" />

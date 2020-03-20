@@ -1,0 +1,244 @@
+[
+
+  {
+    "model": "Cessna 206",
+    "size": "Small Prop",
+    "capacity": 5,
+    "speed": 142,
+    "range": 700,
+    "flight_time": 36,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702044/jetngo/small%20prop/Cessna-206_shtowo.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Diamond DA-62",
+    "size": "Small Prop",
+    "capacity": 5,
+    "speed": 174,
+    "range": 1283,
+    "flight_time": 30,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702005/jetngo/small%20prop/Diamond-DA-62_axld6h.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Diamond Twin Star",
+    "size": "Small Prop",
+    "capacity": 3,
+    "speed": 132,
+    "range": 1129,
+    "flight_time": 38,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702005/jetngo/small%20prop/Diamond-Twin-Star_bnnelw.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "De Havilland Dove",
+    "size": "Small Prop",
+    "capacity": 8,
+    "speed": 180,
+    "range": 1200,
+    "flight_time": 29,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702005/jetngo/small%20prop/De-Havilland-Dove_tgvypr.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Cessna Citation M2",
+    "size": "Small Jet",
+    "capacity": 5,
+    "speed": 404,
+    "range": 1580,
+    "flight_time": 13,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/Cessna-Citation-M2_ovgzuc.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Cessna Citation I",
+    "size": "Small Jet",
+    "capacity": 6,
+    "speed": 348,
+    "range": 1000,
+    "flight_time": 15,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/Cessna-Citation-I_k1t9mg.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Learjet 31",
+    "size": "Small Jet",
+    "capacity": 7,
+    "speed": 418,
+    "range": 1455,
+    "flight_time": 13,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/Learjet-31_ybkfxu.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Nextant 400XT/XTi",
+    "size": "Small Jet",
+    "capacity": 7,
+    "speed": 471,
+    "range": 2003,
+    "flight_time": 11,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/Nextant-400XT-XTi_oqlqcp.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "HondaJet HA-420",
+    "size": "Small Jet",
+    "capacity": 4,
+    "speed": 420,
+    "range": 1180,
+    "flight_time": 13,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/HondaJet-HA-420-PrivateFly-AB1091_hmed55.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Cessna C525 Citation CJ4",
+    "size": "Small Jet",
+    "capacity": 7,
+    "speed": 453,
+    "range": 2002,
+    "flight_time": 12,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702172/jetngo/small/Cessna-C525-Citation-CJ4_uw8z0w.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Learjet 40 / 40XR",
+    "size": "Medium Jet",
+    "capacity": 6,
+    "speed": 425,
+    "range": 1824,
+    "flight_time": 12,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Learjet-40-40XR_prjbsg.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Learjet 75",
+    "size": "Medium Jet",
+    "capacity": 8,
+    "speed": 432,
+    "range": 2060,
+    "flight_time": 12,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Learjet-70_khb4ma.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Legacy 450",
+    "size": "Medium Jet",
+    "capacity": 8,
+    "speed": 500,
+    "range": 2500,
+    "flight_time": 11,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Legacy-450_rqbc7e.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Citation XL",
+    "size": "Medium Jet",
+    "capacity": 8,
+    "speed": 429,
+    "range": 1800,
+    "flight_time": 13,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Citation-XL_qc658c.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Citation XLS",
+    "size": "Medium Jet",
+    "capacity": 8,
+    "speed": 420,
+    "range": 1850,
+    "flight_time": 13,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Citation-XLS_qwyha2.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Hawker 800/800XP",
+    "size": "Medium Jet",
+    "capacity": 8,
+    "speed": 447,
+    "range": 2540,
+    "flight_time": 12,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584702642/jetngo/medium/Hawker-800_r5taad.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "EMB 120 Brasilia",
+    "size": "Regional Airliner",
+    "capacity": 30,
+    "speed": 300,
+    "range": 850,
+    "flight_time": 18,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703065/jetngo/regional/EMB-120-Brasilia-PrivateFly-AA1456_hdc9tm.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "SA226 Metro",
+    "size": "Regional Airliner",
+    "capacity": 19,
+    "speed": 248,
+    "range": 900,
+    "flight_time": 21,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703065/jetngo/regional/SA226-Metro_djkqix.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "De Havilland DHC-6 Twin Otter",
+    "size": "Regional Airliner",
+    "capacity": 20,
+    "speed": 210,
+    "range": 700,
+    "flight_time": 25,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703065/jetngo/regional/De-Havilland-DHC-6-Twin-Otter-PrivateFly-AA5877_oyqctp.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Dornier 328",
+    "size": "Regional Airliner",
+    "capacity": 33,
+    "speed": 320,
+    "range": 900,
+    "flight_time": 17,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703064/jetngo/regional/Dornier-328-PrivateFly-AA1460_er9rha.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "Beechcraft 1900",
+    "size": "Regional Airliner",
+    "capacity": 19,
+    "speed": 283,
+    "range": 700,
+    "flight_time": 19,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703064/jetngo/regional/Beechcraft-1900-PrivateFly-CC-AA4621_ibymqd.jpg",
+    "description": ""
+  },
+
+  {
+    "model": "CASA C-212",
+    "size": "Regional Airliner",
+    "capacity": 24,
+    "speed": 200,
+    "range": 750,
+    "flight_time": 26,
+    "photo_link": "https://res.cloudinary.com/dqnkypfy4/image/upload/v1584703064/jetngo/regional/CASA-C-212-PrivateFly-AA1474_gkkd7p.jpg",
+    "description": ""
+  }
+]
