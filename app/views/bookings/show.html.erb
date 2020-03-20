@@ -54,7 +54,7 @@
           <%= image_tag('https://source.unsplash.com/1600x900/?plane', height: 300, width:540, crop: :fill) %>
         <% end %>
         <div class="my-4">
-        <h3><strong><%= (@booking.end_date - @booking.start_date).to_i + 1%> days for <%= @booking.jet.name %></strong></h3>
+        <h3><strong><%= (@booking.end_date - @booking.start_date).to_i + 1%> days for <%= @booking.jet.name.capitalize %></strong></h3>
         </div>
         <div class="row" style="color: grey;">
           <div class="col-4"><p><i class="fas fa-plane"></i> <%= @booking.jet.model %></p></div>
@@ -72,17 +72,22 @@
         </div>
         <div class="div">
           <h3>Reviews</h3>
-          <% if @reviews.any? %>
-            <ul>
-              <% @reviews.each do |review| %>
-                <li><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %>
-                  <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure to delete this review?"} do %> <i class="far fa-trash-alt"></i> <% end %></p>
-                </li>
+          <% if @booking.reviews.any? %>
+            <ul  id="reviews">
+              <% @booking.reviews.each do |review| %>
+                <%= render 'reviews/show', review: review %>
               <% end %>
             </ul>
           <% else %>
             <p><em><span style="color: grey">No review yet!</span></em></p>
           <% end %>
+        </div>
+        <div class="row">
+          <div class="col-8 offset-2">
+            <% if current_user == @booking.user %>
+              <%= render 'reviews/form', booking: @booking, review: @review %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -120,24 +125,12 @@
         <% end %>
       </div>
     <% elsif @booking.status == 'accepted'%>
-      <% if current_user == @booking.user %>
-        <div class="col-6 mt-3">
-          <button type="button" class="btn btn-gradient" data-toggle="modal" data-target="#reviewModal">Add a review</button>
-        </div>
-        <div class="col-6">
-          <%= simple_form_for @booking do |f| %>
-          <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-          <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="col-6">
-          <%= simple_form_for @booking do |f| %>
-          <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-          <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="col-6">
+        <%= simple_form_for @booking do |f| %>
+        <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
+        <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+        <% end %>
+      </div>
     <% else %>
       <div class="col-6 mt-3">
         <%= link_to 'Back to list', root_path, class: 'btn btn-ghost' %>
@@ -145,25 +138,4 @@
     <% end %>
   </div>
 </div>
-<div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reviewModalLabel">Create review</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-left">
-        <%= simple_form_for [@booking, @review] do |f| %>
-          <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5]  %>
-          <%= f.input :content %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-ghost" data-dismiss="modal">Close</button>
-        <%= f.submit class: 'btn btn-gradient' %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+
