@@ -1,132 +1,124 @@
 <% if @jet.photos.attached? %>
-  <% if @jet.photos.count == 1 %>
-    <div class="banner" style="padding: 250px 0; background-image: url(<%= cl_image_path @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>)"></div>
-  <% elsif @jet.photos.count == 2 %>
-    <div class="photo-container">
-      <div class="left-container">
-        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
-      </div>
-      <div class="right-container">
-        <% @jet.photos.drop(1).each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
-        <% end %>
-      </div>
-    </div>
-  <% elsif @jet.photos.count == 3 %>
-    <div class="photo-container">
-      <div class="left-container">
-        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
-      </div>
-      <div class="right-container">
-        <% @jet.photos.drop(1).each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:100%;width:200%;', crop: :fill %>
-          <div></div>
-        <% end %>
-      </div>
-    </div>
-  <% elsif @jet.photos.count == 4 %>
-    <div class="photo-container">
-      <div class="left-container">
-        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
-      </div>
-      <div class="right-container">
-        <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
-        <% end %>
-        <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
-      </div>
-    </div>
-  <% elsif @jet.photos.count >= 5 %>
-    <div class="photo-container">
-      <div class="left-container">
-        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
-      </div>
-      <div class="right-container">
-        <% @jet.photos.drop(1).each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<% if @jet.photos.count == 1 %>
+<div class="banner" style="padding: 250px 0; background-image: url(<%= cl_image_path @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>)"></div>
+<% elsif @jet.photos.count == 2 %>
+<div class="photo-container">
+  <div class="left-container">
+    <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+  </div>
+  <div class="right-container">
+    <% @jet.photos.drop(1).each do |photo| %>
+    <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
+    <% end %>
+  </div>
+</div>
+<% elsif @jet.photos.count == 3 %>
+<div class="photo-container">
+  <div class="left-container">
+    <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+  </div>
+  <div class="right-container">
+    <% @jet.photos.drop(1).each do |photo| %>
+    <%= cl_image_tag photo.key, style: 'height:100%;width:200%;', crop: :fill %>
+    <div></div>
+    <% end %>
+  </div>
+</div>
+<% elsif @jet.photos.count == 4 %>
+<div class="photo-container">
+  <div class="left-container">
+    <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+  </div>
+  <div class="right-container">
+    <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
+    <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+    <% end %>
+    <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
+  </div>
+</div>
+<% elsif @jet.photos.count >= 5 %>
+<div class="photo-container">
+  <div class="left-container">
+    <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+  </div>
+  <div class="right-container">
+    <% @jet.photos.drop(1).each do |photo| %>
+    <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+    <% end %>
+  </div>
+</div>
+<% end %>
 <% else %>
-  <div class="banner" style="padding: 250px 0; background-image: url(<%= image_path('https://source.unsplash.com/1600x900/?plane', crop: :fill) %>);"></div>
+<div class="banner" style="padding: 250px 0; background-image: url(<%= image_path('https://source.unsplash.com/1600x900/?plane', crop: :fill) %>);"></div>
 <% end %>
 <div class="container my-4">
   <div class="row justify-content-between">
     <% if current_user != @jet.user %>
-      <div class="col-6">
-        <div class="row">
-          <div class="col-9">
-            <h1><%= @jet.name.capitalize %></h1>
-          </div>
-          <div class="col-3 text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
-          </div>
+    <div class="col-6">
+      <div class="row">
+        <div class="col-9">
+          <h1><%= @jet.name.capitalize %></h1>
         </div>
-        <div class="row" style="color: grey;">
-          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
-          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
-          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+        <div class="col-3 text-center">
+          <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+          <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
         </div>
-        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+      </div>
+      <div class="row" style="color: grey;">
+        <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+        <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+        <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+      </div>
+      <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
         <div class="box-grey">
           <p class="text-justify"><%= @jet.description %></p>
         </div>
       </div>
-      <div class="col-6 text-center">
-        <%= simple_form_for [@jet, @booking] do |f| %>
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
-          <%= f.button :submit, 'Book now', class: 'btn btn-gradient' %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="col-12">
-        <div class="row">
-          <div class="col-9">
-            <h1><%= @jet.name.capitalize %>
-              <%= link_to '', class: 'small-a', data: { toggle: "modal", target: "#jetEditModal" } do %> <i class="fas fa-pen"></i> <% end %>
-              <%= link_to jet_path(@jet), method: :delete, class: 'small-a', data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
-            </h1>
-          </div>
-          <div class="col-3 text-center">
-            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
-            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
-          </div>
-        </div>
-        <div class="row" style="color: grey;">
-          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
-          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
-          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
-        </div>
-        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
-        <div class="box-grey">
-          <p class="text-justify"><%= @jet.description %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <hr>
-  <div class="row my-4">
-    <div class="col-12 text-center">
-      <h2>Reviews</h2>
-      <% if @jet_reviews.any? %>
-        <ul>
-          <% @jet_reviews.each do |review| %>
-            <li><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %></p></li>
-          <% end %>
-        </ul>
-      <% else %>
-       <p><em><span class="grey">No review yet!</span></em></p>
+    <div class="col-6"> <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+
+      <%= simple_form_for [@jet, @booking] do |f| %>
+      <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker range_start"} %>
+      <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker  range_end"} %>
+      <%= f.button :submit, "Book now", class: "btn btn-gradient" %>
       <% end %>
     </div>
   </div>
-  <div class="text-center my-4">
-    <%= link_to "Back to list", root_path, class: "btn btn-ghost"%>
+  <% else %>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-9">
+        <h1><%= @jet.name.capitalize %>
+          <%= link_to '', class: 'small-a', data: { toggle: "modal", target: "#jetEditModal" } do %> <i class="fas fa-pen"></i> <% end %>
+          <%= link_to jet_path(@jet), method: :delete, class: 'small-a', data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
+        </h1>
+      </div>
+      <div class="col-3 text-center">
+        <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+        <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+      </div>
+    </div>
+    <div class="row" style="color: grey;">
+      <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+      <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+      <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+    </div>
+    <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+    <div class="box-grey">
+      <p class="text-justify"><%= @jet.description %></p>
+    </div>
   </div>
+  <% end %>
+</div>
+<hr>
+<div class="row my-4">
+  <div class="col-12 text-center">
+    <h2>Reviews</h2>
+    <p>No reviews yet!</p>
+  </div>
+</div>
+<div class="text-center my-4">
+  <%= link_to "Back to list", root_path, class: "btn btn-ghost"%>
+</div>
 </div>
 <div class="modal fade" id="jetEditModal" tabindex="-1" role="dialog" aria-labelledby="jetEditModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -139,13 +131,13 @@
       </div>
       <div class="modal-body text-left">
         <%= simple_form_for [@jet] do |f| %>
-          <%= f.input :name, placeholder: "Name of the jet"%>
-          <%= f.input :model, placeholder: "Model name of the jet" %>
-          <%= f.input :capacity, collection: (4..15)  %>
-          <%= f.input :unit_price, collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
-          <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
-          <%= f.input :description%>
-          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :name, placeholder: "Name of the jet"%>
+        <%= f.input :model, placeholder: "Model name of the jet" %>
+        <%= f.input :capacity, collection: (4..15)  %>
+        <%= f.input :unit_price, collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
+        <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+        <%= f.input :description%>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-ghost" data-dismiss="modal">Close</button>
