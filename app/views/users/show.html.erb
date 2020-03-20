@@ -1,65 +1,87 @@
-<div class="container">
-  <div class="mt-4">
-    <h2 class="text-center"> <%= @user.full_name %> Jets</h2>
+<div class="container text-center">
+  <div class="my-4">
+    <h1>My Dashboard</h1>
   </div>
-  <div class="cards my-4">
-    <% @jets.each do |jet| %>
-    <div class="card-trip">
-      <% if jet.photos.attached? %>
-      <%= cl_image_tag jet.photos.first.key, crop: :fill %>
-      <% else %>
-      <img src="https://source.unsplash.com/1600x900/?plane" />
-      <% end %>
-      <div class="card-trip-infos">
-        <div>
-          <h2><%= link_to jet.name.capitalize, jet_path(jet)  %></h2>
-          <p><%= jet.model %> Location: <%= jet.city.name %> </p>
-        </div>
-        <h2 class="card-trip-pricing">&euro; <%= jet.unit_price %></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
-      </div>
+  <div class="row justify-content-between my-4">
+    <div class="col-3 box-grey">
+      <h3 class="my-4">My jets</h3>
+      <ul>
+        <% @jets.each do |jet| %>
+          <li><%= link_to jet.name, jet_path(jet) %></li>
+        <% end %>
+      </ul>
     </div>
-    <% end %>
-  </div>
-</div>
-<% if current_user = @user %>
-<% @booking_requests.each do |booking| %>
-<div class="card-trip">
-  <% if booking.jet.photos.attached? %>
-  <%= cl_image_tag booking.jet.photos.first.key, crop: :fill %>
-  <% else %>
-  <img src="https://source.unsplash.com/1600x900/?plane" />
-  <% end %>
-  <div class="card-trip-infos">
-    <div>
-      <p><%= booking.start_date %></p>
-      <p><%= booking.end_date %></p>
-      <p><%= (booking.end_date - booking.start_date).to_i %> days</p>
-      <p><%= booking.total_price %></p>
-      <p><%= booking.jet.name %></p>
-      <p><%= booking.jet.model %></p>
-      <p><%= booking.jet.capacity %></p>
-      <p><%= booking.jet.user.first_name %> <%= booking.jet.user.last_name %></p>
-      <p><%= booking.jet.city.name %></p>
-      <%= booking.status %>
-      <% if booking.status == "pending" %>
-      <%= simple_form_for booking do |f| %>
-      <%= f.input :status, input_html: {value: 'accepted'}, as: :hidden %>
-      <%= f.submit "accept" %>
-      <% end  %>
-      <%= simple_form_for booking do |f| %>
-      <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-      <%= f.submit "cancel" %>
-      <% end  %>
-      <%= simple_form_for booking do |f| %>
-      <%= f.input :status, input_html: {value: 'declined'}, as: :hidden %>
-      <%= f.submit "decline" %>
-      <% end  %>
-      <% end %>
+    <div class="col-3 box-grey">
+      <h3 class="my-4">Bookings as a host</h3>
+      <p>Pending bookings</p>
+      <ul>
+        <% @booking_requests.each do |booking| %>
+          <% if booking.status == 'pending' %>
+            <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Accepted bookings</p>
+      <ul>
+        <% @booking_requests.each do |booking| %>
+          <% if booking.status == 'accepted' %>
+            <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Declined bookings</p>
+      <ul>
+        <% @booking_requests.each do |booking| %>
+          <% if booking.status == 'declined' %>
+            <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Cancelled bookings</p>
+      <ul>
+        <% @booking_requests.each do |booking| %>
+          <% if booking.status == 'cancelled' %>
+            <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
-    <h2 class="card-trip-pricing">&euro; <%= booking.jet.unit_price %></h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+    <div class="col-3 box-grey">
+      <h3 class="my-4">Bookings as a guest</h3>
+      <p>Pending bookings</p>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.status == 'pending' %>
+            <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Accepted bookings</p>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.status == 'accepted' %>
+            <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Declined bookings</p>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.status == 'declined' %>
+           <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <p>Cancelled bookings</p>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <% if booking.status == 'cancelled' %>
+           <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
   </div>
+
+
 </div>
-<% end  %>
-<% end %>

@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     @days = @booking.end_date - @booking.start_date + 1
     @total_price = @days * @jet.unit_price
     @booking.total_price = @total_price
-    @booking.status = "Send"
+    @booking.status = "send"
     if @booking.save
       redirect_to booking_path(@booking)
     else

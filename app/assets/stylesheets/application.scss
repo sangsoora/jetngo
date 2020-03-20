@@ -18,6 +18,10 @@ ul {
   list-style: none;
   padding-left: 0;
 }
+li > a {
+  line-height: 40px;
+  font-size: 16px;
+}
 .small-a {
   font-size: 18px;
   color: grey;
@@ -25,3 +29,4 @@ ul {
 label {
   color: $main;
 }
+

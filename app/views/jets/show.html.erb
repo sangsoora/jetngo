@@ -53,31 +53,61 @@
 <% end %>
 <div class="container my-4">
   <div class="row justify-content-between">
-    <div class="col-6 text-center">
-      <h2><%= @jet.name.capitalize %>
-        <% if current_user %>
-          <%= link_to '', class: 'small-a', data: { toggle: "modal", target: "#jetEditModal" } do %> <i class="fas fa-pen"></i> <% end %>
-          <%= link_to jet_path(@jet), method: :delete, class: 'small-a', data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
+    <% if current_user != @jet.user %>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-9">
+            <h1><%= @jet.name.capitalize %></h1>
+          </div>
+          <div class="col-3 text-center">
+            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+          </div>
+        </div>
+        <div class="row" style="color: grey;">
+          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+        </div>
+        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+        <div class="jet-description">
+          <p class="text-justify"><%= @jet.description %></p>
+        </div>
+      </div>
+      <div class="col-6 text-center">
+        <%= simple_form_for [@jet, @booking] do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.button :submit, 'Book now', class: 'btn btn-gradient' %>
         <% end %>
-      </h2>
-      <p style="color: grey"><img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">    <%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
-      <h3><%= @jet.model %></h3>
-      <ul>
-        <li><p>City: <%= @jet.city.name %></p></li>
-        <li><p>Maximum Capacity: <%= @jet.capacity %></p></li>
-        <li><p></p></li>
-        <li><p>Price per day: &euro; <%= @jet.unit_price%></p></li>
-      </ul>
-    </div>
-    <div class="col-6 text-center">
-      <%= simple_form_for [@jet, @booking] do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.button :submit, 'Book now', class: 'btn btn-gradient' %>
-      <% end %>
-    </div>
+      </div>
+    <% else %>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-9">
+            <h1><%= @jet.name.capitalize %>
+              <%= link_to '', class: 'small-a', data: { toggle: "modal", target: "#jetEditModal" } do %> <i class="fas fa-pen"></i> <% end %>
+              <%= link_to jet_path(@jet), method: :delete, class: 'small-a', data: { confirm: "Are you sure to delete #{@jet.name}?"} do %> <i class="far fa-trash-alt"></i> <% end %>
+            </h1>
+          </div>
+          <div class="col-3 text-center">
+            <img src="https://kitt.lewagon.com/placeholder/users/random" class="avatar">
+            <p style="color: grey"><%= @jet.user.first_name %> <%= @jet.user.last_name %></p>
+          </div>
+        </div>
+        <div class="row" style="color: grey;">
+          <div class="col-4"><p><i class="fas fa-plane"></i> <%= @jet.model %></p></div>
+          <div class="col-4"><p><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i><%= @jet.city.name %></p></div>
+          <div class="col-4"><p><i class="fas fa-user" style="margin-right: 8px;"> <%= @jet.capacity %></i></p></div>
+        </div>
+        <h4><strong style='color: #EE534F;'>&euro; <%= @jet.unit_price%></strong> <span style="color: grey; font-size: 16px;" ><em>per day</em></span></h4>
+        <div class="box-grey">
+          <p class="text-justify"><%= @jet.description %></p>
+        </div>
+      </div>
+    <% end %>
   </div>
   <hr>
   <div class="row my-4">
@@ -107,6 +137,7 @@
           <%= f.input :capacity, collection: (4..15)  %>
           <%= f.input :unit_price, collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
           <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+          <%= f.input :description%>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       </div>
       <div class="modal-footer">
