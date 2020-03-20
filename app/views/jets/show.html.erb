@@ -19,20 +19,20 @@
       </div>
       <div class="right-container">
         <% @jet.photos.drop(1).each do |photo| %>
-          <%= cl_image_tag photo.key, style: 'height:200%;width:200%;', crop: :fill %>
+          <%= cl_image_tag photo.key, style: 'height:100%;width:200%;', crop: :fill %>
           <div></div>
         <% end %>
       </div>
     </div>
   <% elsif @jet.photos.count == 4 %>
-  <div class="photo-container">
-    <div class="left-container">
-      <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
-    </div>
-    <div class="right-container">
-      <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
-        <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
-      <% end %>
+    <div class="photo-container">
+      <div class="left-container">
+        <%= cl_image_tag @jet.photos.first.key, style: 'height:100%;width:100%;', crop: :fill %>
+      </div>
+      <div class="right-container">
+        <% @jet.photos.drop(1).reverse.drop(1).reverse.each do |photo| %>
+          <%= cl_image_tag photo.key, style: 'height:100%;width:100%;', crop: :fill %>
+        <% end %>
         <%= cl_image_tag @jet.photos.last.key, style: 'height:100%;width:200%;', crop: :fill %>
       </div>
     </div>
@@ -115,24 +115,12 @@
   <div class="row my-4">
     <div class="col-12 text-center">
       <h2>Reviews</h2>
-      <% if @jet_reviews.any? %>
-        <ul>
-          <% @jet_reviews.each do |review| %>
-            <li><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %></p></li>
-          <% end %>
-        </ul>
-      <% else %>
-       <p><em><span class="grey">No review yet!</span></em></p>
-      <% end %>
-
+      <p>No reviews yet!</p>
     </div>
   </div>
-
-</div>
-
-<div class="text-center my-4">
-  <%= link_to "Back to list", root_path, class: "btn btn-ghost"%>
-</div>
+  <div class="text-center my-4">
+    <%= link_to "Back to list", root_path, class: "btn btn-ghost"%>
+  </div>
 </div>
 <div class="modal fade" id="jetEditModal" tabindex="-1" role="dialog" aria-labelledby="jetEditModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
