@@ -80,7 +80,6 @@
     <div class="col-12 text-center">
       <h2>Reviews</h2>
       <p>No reviews yet!</p>
-      <a href="#">+ Add review</a>
     </div>
   </div>
   <div class="text-center my-4">
@@ -98,6 +97,7 @@
       </div>
       <div class="modal-body text-left">
         <%= simple_form_for [@jet] do |f| %>
+<<<<<<< HEAD
           <%= f.input :model, placeholder: "Model" %>
           <%= f.input :size, prompt: "Size category", collection: ["Small Prop", "Small Jet", "Medium Jet", "Regional Airliner"]%>
           <%= f.input :capacity, prompt: "Number of seats", collection: (4..25)  %>
@@ -106,6 +106,15 @@
           <%= f.input :flight_time, prompt: "Flight time in hours", collection: (11..27).to_a  %>
           <%= f.input :unit_price, placeholder: 'Price per day'  %>
           <%= f.association :city, prompt: "Choose a City", collection: City.order(:name)%>
+=======
+          <%= f.input :name, placeholder: "Name of the jet"%>
+          <%= f.input :model, placeholder: "Model name of the jet" %>
+          <%= f.input :capacity, collection: (4..15)  %>
+          <%= f.input :unit_price, collection: [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]  %>
+          <%= f.association :city, collection: City.order(:name), prompt: "Choose a City" %>
+          <%= f.input :description%>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+>>>>>>> master
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-ghost" data-dismiss="modal">Close</button>

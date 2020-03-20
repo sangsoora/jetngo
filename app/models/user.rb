@@ -7,4 +7,9 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 2 }
   has_many :jets
   has_many :bookings
+  has_many :booking_requests, through: :jets, source: :bookings
+
+  def full_name
+    first_name + " " + last_name
+  end
 end

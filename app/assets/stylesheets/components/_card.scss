@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
 }
+.cards-sm {
+  grid-template-columns: 1fr 1fr;
+}
 .card-trip {
   overflow: hidden;
   background: white;

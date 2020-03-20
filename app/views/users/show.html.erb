@@ -1,0 +1,151 @@
+<div class="container text-center">
+  <div class="my-4">
+    <h1>My Dashboard</h1>
+  </div>
+  <div class="row justify-content-between my-4">
+    <% if @jets.empty? %>
+      <div class="col-5 box-grey">
+        <h3 class="my-4">My jets</h3>
+        <%= link_to 'Become a jet host', new_jet_path, class: 'btn btn-ghost btn-host' %>
+      </div>
+      <div class="col-5 box-grey">
+        <h3 class="my-4">Bookings</h3>
+        <p class="grey">Pending bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'pending' %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Accepted bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'accepted' %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Declined bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'declined' %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+               <p><%= booking.start_date %> to <%= booking.end_date %></p>
+             </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Cancelled bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'cancelled' %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+               <p><%= booking.start_date %> to <%= booking.end_date %></p>
+             </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <div class="col-3 box-grey">
+        <h3 class="my-4">My jets</h3>
+        <ul>
+          <% @jets.each do |jet| %>
+            <li><%= link_to jet.name, jet_path(jet)%></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-3 box-grey">
+        <h3 class="my-4">Bookings as a host</h3>
+        <p class="grey">Pending bookings</p>
+        <ul>
+          <% @booking_requests.each do |booking| %>
+            <% if booking.status == 'pending' %>
+              <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Accepted bookings</p>
+        <ul>
+          <% @booking_requests.each do |booking| %>
+            <% if booking.status == 'accepted' %>
+              <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Declined bookings</p>
+        <ul>
+          <% @booking_requests.each do |booking| %>
+            <% if booking.status == 'declined' %>
+              <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Cancelled bookings</p>
+        <ul>
+          <% @booking_requests.each do |booking| %>
+            <% if booking.status == 'cancelled' %>
+              <li><%= link_to "Booking from #{booking.user.full_name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-3 box-grey">
+        <h3 class="my-4">Bookings as a guest</h3>
+        <p class="grey">Pending bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'pending' %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Accepted bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'accepted' %>
+              <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+                <p><%= booking.start_date %> to <%= booking.end_date %></p>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Declined bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'declined' %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+               <p><%= booking.start_date %> to <%= booking.end_date %></p>
+             </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <p class="grey">Cancelled bookings</p>
+        <ul>
+          <% @bookings.each do |booking| %>
+            <% if booking.status == 'cancelled' %>
+             <li><%= link_to "Booking fof #{booking.jet.name}", booking_path(booking) %>
+               <p><%= booking.start_date %> to <%= booking.end_date %></p>
+             </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

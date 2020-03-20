@@ -1,0 +1,64 @@
+<!-- <div class="container">
+  <div class="mt-4">
+    <h2>My upcoming Bookings</h2>
+  </div>
+  <div class="cards my-4">
+    <% @upcoming_bookings.each do |booking| %>
+    <div class="card-trip">
+      <% if booking.jet.photos.attached? %>
+      <%= cl_image_tag booking.jet.photos.first.key, crop: :fill %>
+      <% else %>
+      <img src="https://source.unsplash.com/1600x900/?plane" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <p><%= booking.start_date %></p>
+          <p><%= booking.end_date %></p>
+          <p><%= (booking.end_date - booking.start_date).to_i %> days</p>
+          <p><%= booking.total_price %></p>
+          <p><%= booking.jet.name %></p>
+          <p><%= booking.jet.model %></p>
+          <p><%= booking.jet.capacity %></p>
+          <p><%= booking.jet.user.first_name %> <%= booking.jet.user.last_name %></p>
+          <p><%= booking.jet.city.name %></p>
+        </div>
+        <h2 class="card-trip-pricing">&euro; <%= booking.jet.unit_price %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="mt-4">
+    <h2 class="text-center">My past Bookings</h2>
+  </div>
+  <div class="cards my-4">
+    <% @past_bookings.each do |booking| %>
+    <div class="card-trip">
+      <% if booking.jet.photos.attached? %>
+      <%= cl_image_tag booking.jet.photos.first.key, crop: :fill %>
+      <% else %>
+      <img src="https://source.unsplash.com/1600x900/?plane" />
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <p><%= booking.start_date %></p>
+          <p><%= booking.end_date %></p>
+          <p><%= (booking.end_date - booking.start_date).to_i %> days</p>
+          <p><%= booking.total_price %></p>
+          <p><%= booking.jet.name %></p>
+          <p><%= booking.jet.model %></p>
+          <p><%= booking.jet.capacity %></p>
+          <p><%= booking.jet.user.first_name %> <%= booking.jet.user.last_name %></p>
+          <p><%= booking.jet.city.name %></p>
+        </div>
+        <h2 class="card-trip-pricing">&euro; <%= booking.jet.unit_price %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/random" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+ -->

@@ -2,11 +2,11 @@
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <%= cl_image_tag jet.photos.first.key, height: 200, width:300, crop: :fill, class: 'd-block w-100'%>
+        <%= cl_image_tag jet.photos.first.key, height: 150, width:250, style: 'border-top-right-radius:10px;border-top-left-radius:10px;', crop: :fill, class: 'd-block w-100'%>
       </div>
       <% jet.photos.drop(1).each do |photo| %>
         <div class="carousel-item">
-          <%= cl_image_tag photo.key, height: 200, width:300, crop: :fill, class: 'd-block w-100' %>
+          <%= cl_image_tag photo.key, height: 150, width:250, style: 'border-top-right-radius:10px;border-top-left-radius:10px;', crop: :fill, class: 'd-block w-100' %>
         </div>
       <% end %>
     </div>
@@ -20,10 +20,15 @@
     </a>
   </div>
 <% elsif jet.photos.attached? && jet.photos.count == 1 %>
-  <%= cl_image_tag jet.photos.first.key, height: 200, width:300, crop: :fill %>
+  <%= cl_image_tag jet.photos.first.key, height: 150, width:250, style: 'border-top-right-radius:10px;border-top-left-radius:10px;', crop: :fill %>
 <% else %>
-  <%= image_tag('https://source.unsplash.com/1600x900/?plane', height: 200, width:300, crop: :fill) %>
+  <%= image_tag('https://source.unsplash.com/1600x900/?plane', height: 150, width:250, style: 'border-top-right-radius:10px;border-top-left-radius:10px;', crop: :fill) %>
 <% end %>
+<div class="container my-2">
+  <p style="color: grey;"><%= jet.model %></p>
+  <h4><strong><%= link_to jet.name, jet_path(jet) %></strong></h4>
+  <p style="color: grey;">&euro; <%= jet.unit_price %></p>
+</div>
 
 <h3><strong><%= link_to jet.model, jet_path(jet) %></strong></h3>
 <p style="color: lightgrey;"><%= jet.unit_price %></p>

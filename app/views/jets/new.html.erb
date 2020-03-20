@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <%= image_tag('host.jpeg', style: 'margin-top:24px;width:100%;')%>
-      <%= image_tag('host1.jpeg', style: 'width:100%;')%>
+      <%= image_tag('host.jpeg', style: 'margin-top:32px;width:100%;')%>
+      <%= image_tag('host1.jpeg', style: 'margin-top:16px;width:100%;')%>
     </div>
-    <div class="col-6">
+    <div class="col-6 mb-4">
       <h2 class="mt-4">Become a jet host</h2>
       <%= simple_form_for @jet do |f| %>
         <%= f.input :model, placeholder: "Model" %>
@@ -18,9 +18,6 @@
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.button :submit, 'Add a jet', class: 'btn btn-gradient' %>
       <% end %>
-      <div class="my-2">
-        <%= link_to "Back to list", root_path %>
-      </div>
     </div>
   </div>
 
