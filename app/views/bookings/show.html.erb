@@ -72,7 +72,7 @@
         </div>
         <div class="div">
           <h3>Reviews</h3>
-          <% if @reviews.any? %>
+          <% if @booking.reviews.any? %>
             <ul  id="reviews">
               <% @booking.reviews.each do |review| %>
                <%= render 'reviews/show', review: review %>

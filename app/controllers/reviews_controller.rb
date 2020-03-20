@@ -11,16 +11,16 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review.booking = @booking
     if @review.save
-      redirect_to booking_path(@booking)        respond_to do |format|
+     respond_to do |format|
         format.html { redirect_to booking_path(@booking) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
-    else      else
-      render :new       respond_to do |format|
+    else
+        respond_to do |format|
         format.html { render 'bookings/show' }
         format.js  # <-- idem
       end
-
+    end
   end
 
   def destroy
