@@ -1,0 +1,3 @@
+<li data-review-id="<%= review.id %>"><p><% review.rating.times { %> <i class="fas fa-star"></i> <% } %> - <%= review.content %>
+  <%= link_to review_path(review), method: :delete , remote: true , data: { confirm: "Are you sure to delete this review?"} do %> <i class="far fa-trash-alt"></i> <% end %></p>
+  </li>
