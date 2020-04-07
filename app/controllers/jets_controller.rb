@@ -34,7 +34,6 @@ class JetsController < ApplicationController
   def create
     @jet = Jet.new(jet_params)
     @jet.user = current_user
-
     if @jet.save
       redirect_to jet_path(@jet)
     else

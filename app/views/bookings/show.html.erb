@@ -117,22 +117,22 @@
     <% elsif @booking.status == 'pending' && current_user == @booking.jet.user %>
       <div class="col-6">
         <%= simple_form_for @booking do |f| %>
-        <%= f.input :status, input_html: {value: 'accepted'}, as: :hidden %>
-        <%= f.submit "Accept request", class: 'btn btn-gradient'%>
+          <%= f.input :status, input_html: {value: 'accepted'}, as: :hidden %>
+          <%= f.submit "Accept request", class: 'btn btn-gradient'%>
         <% end %>
       </div>
       <div class="col-6">
         <%= simple_form_for @booking do |f| %>
-        <%= f.input :status, input_html: {value: 'declined'}, as: :hidden %>
-        <%= f.submit "Decline", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <%= f.input :status, input_html: {value: 'declined'}, as: :hidden %>
+          <%= f.submit "Decline", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
         <% end %>
       </div>
     <% elsif @booking.status == 'accepted'%>
       <div class="col-6">
           <%= simple_form_for @booking do |f| %>
-                  <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
-         <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
-             <% end %>
+            <%= f.input :status, input_html: {value: 'cancelled'}, as: :hidden %>
+            <%= f.submit "Cancel booking", data: { confirm: "Are you sure?"}, class: 'btn btn-ghost'%>
+          <% end %>
         </div>
     <% else %>
       <div class="col-6 mt-3">
